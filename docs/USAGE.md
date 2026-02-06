@@ -268,12 +268,13 @@ Speech.reset();
 
 ### Speaking Text
 
-Speak a given text using the current global settings.
+Speak a given text using the current global settings, or provide per-utterance options.
 
 **API Definition:**
 
 ```ts
 Speech.speak(text: string): Promise<string>
+Speech.speak(text: string, options: VoiceOptions): Promise<string>
 ```
 
 **Returns:**
@@ -293,9 +294,24 @@ Speech.onFinish(({id: eventId}) => {
 });
 ```
 
+```ts
+const id2 = await Speech.speak('Hello!', {
+  language: 'en-US',
+  pitch: 1.5,
+  rate: 0.8,
+});
+
+// Track events specific to this utterance
+Speech.onProgress(({id: eventId, location, length}) => {
+  if (eventId === id2) {
+    console.log(`Progress: ${location}/${length}`);
+  }
+});
+```
+
 ---
 
-### Speaking Text with Custom Options
+### Speaking Text with Custom Options (Deprecated)
 
 Override global options for a specific utterance.
 
@@ -305,26 +321,9 @@ Override global options for a specific utterance.
 Speech.speakWithOptions(text: string, options: VoiceOptions): Promise<string>
 ```
 
-**Returns:**
+**Notes:**
 
-- A unique utterance ID (string) returned immediately when the utterance is queued. Use it to filter events for this specific speech operation.
-
-**Example Usage:**
-
-```ts
-const id = await Speech.speakWithOptions('Hello!', {
-  language: 'en-US',
-  pitch: 1.5,
-  rate: 0.8,
-});
-
-// Track events specific to this utterance
-Speech.onProgress(({id: eventId, location, length}) => {
-  if (eventId === id) {
-    console.log(`Progress: ${location}/${length}`);
-  }
-});
-```
+- Deprecated. Use `Speech.speak(text, options)` instead.
 
 ---
 
