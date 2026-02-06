@@ -14,7 +14,7 @@ class Speech {
   static maxInputLength = 4000;
   static reset = mockFn;
   static stop = mockPromise;
-  static initialize = mockFn;
+  static configure = mockFn;
   static speak = mockPromise;
   static pause = mockPromiseBool;
   static resume = mockPromiseBool;

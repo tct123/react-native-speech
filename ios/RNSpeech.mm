@@ -217,7 +217,7 @@ RCT_EXPORT_MODULE();
   return utterance;
 }
 
-- (void)initialize:(VoiceOptions &)options {
+- (void)configure:(VoiceOptions &)options {
   NSMutableDictionary *newOptions = [NSMutableDictionary dictionaryWithDictionary:self.globalOptions];
   NSDictionary *validatedOptions = [self getValidatedOptions:options];
   [newOptions addEntriesFromDictionary:validatedOptions];

@@ -73,15 +73,15 @@ export default class Speech {
    * Sets the global options for all subsequent speak() calls
    * @param options - Voice configuration options
    * @example
-   * Speech.initialize({
+   * Speech.configure({
    *   pitch: 1.2,
    *   rate: 0.8,
    *   volume: 1.0,
    *   language: 'en-US'
    * });
    */
-  public static initialize(options: VoiceOptions): void {
-    TurboSpeech.initialize(options);
+  public static configure(options: VoiceOptions): void {
+    TurboSpeech.configure(options);
   }
   /**
    * Resets all speech options to their default values

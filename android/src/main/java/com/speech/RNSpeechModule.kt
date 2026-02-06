@@ -458,7 +458,7 @@ class RNSpeechModule(reactContext: ReactApplicationContext) :
     }
   }
 
-  override fun initialize(options: ReadableMap) {
+  override fun configure(options: ReadableMap) {
     val newOptions = globalOptions.toMutableMap()
     newOptions.putAll(getValidatedOptions(options))
     globalOptions = newOptions

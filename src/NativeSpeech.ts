@@ -99,7 +99,7 @@ export interface Spec extends TurboModule {
   isSpeaking: () => Promise<boolean>;
   speak: (text: string) => Promise<string>;
   getEngines: () => Promise<EngineProps[]>;
-  initialize: (options: VoiceOptions) => void;
+  configure: (options: VoiceOptions) => void;
   openVoiceDataInstaller: () => Promise<void>;
   setEngine: (engineName: string) => Promise<void>;
   getAvailableVoices: (language?: string) => Promise<VoiceProps[]>;

@@ -205,14 +205,14 @@ Speech.openVoiceDataInstaller().catch(error => {
 
 ---
 
-### Initializing Global Speech Options
+### Configuring Global Speech Options
 
 Set global speech options that apply to all speech synthesis calls.
 
 **API Definition:**
 
 ```ts
-Speech.initialize(options: VoiceOptions): void
+Speech.configure(options: VoiceOptions): void
 ```
 
 **VoiceOptions Properties:**
@@ -236,7 +236,7 @@ Speech.initialize(options: VoiceOptions): void
 **Example Usage:**
 
 ```ts
-Speech.initialize({
+Speech.configure({
   language: 'en-US',
   volume: 1.0,
   pitch: 1.2,

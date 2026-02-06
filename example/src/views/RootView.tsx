@@ -37,7 +37,7 @@ const RootView: React.FC = () => {
   const targetId = React.useRef<string>('');
 
   React.useEffect(() => {
-    // Speech.initialize({silentMode: 'obey', ducking: true});
+    // Speech.configure({silentMode: 'obey', ducking: true});
 
     const onSpeechEnd = () => {
       setIsStarted(false);
@@ -92,7 +92,7 @@ const RootView: React.FC = () => {
 
     // (async () => {
     //   const enVoices = await Speech.getAvailableVoices('en-us');
-    //   Speech.initialize({
+    //   Speech.configure({
     //     rate: 0.5,
     //     volume: 1,
     //     voice: enVoices[3]?.identifier,
