@@ -230,21 +230,19 @@ RCT_EXPORT_MODULE();
 
 - (void)getAvailableVoices:(NSString *)language
                   resolve:(RCTPromiseResolveBlock)resolve
-                   reject:(RCTPromiseRejectBlock)reject
+                  reject:(RCTPromiseRejectBlock)reject
 {
   NSMutableArray *voicesArray = [NSMutableArray new];
-  NSArray *speechVoices = [AVSpeechSynthesisVoice speechVoices];
+  NSArray<AVSpeechSynthesisVoice *> *voices = [AVSpeechSynthesisVoice speechVoices];
   
-  if (language) {
-    NSString *lowercaseLanguage = [language lowercaseString];
-    
-    for (AVSpeechSynthesisVoice *voice in speechVoices) {
-      if ([[voice.language lowercaseString] hasPrefix:lowercaseLanguage]) {
-        [voicesArray addObject:[self getVoiceItem:voice]];
-      }
-    }
-  } else {
-    for (AVSpeechSynthesisVoice *voice in speechVoices) {
+  if (!voices) {
+    resolve(voicesArray);
+    return;
+  }
+  NSString *lowercaseLanguage = [language lowercaseString];
+  
+  for (AVSpeechSynthesisVoice *voice in voices) {
+    if (!lowercaseLanguage || [[voice.language lowercaseString] hasPrefix:lowercaseLanguage]) {
       [voicesArray addObject:[self getVoiceItem:voice]];
     }
   }
