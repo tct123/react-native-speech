@@ -77,17 +77,15 @@ const RootView: React.FC = () => {
       }
     });
     const progressSubscription = Speech.onProgress(({id, location, length}) => {
-      if (id === targetId.current) {
-        setHighlights([
-          {
-            start: location,
-            end: location + length,
-          },
-        ]);
-        console.log(
-          `Speech ${id} progress, current word length: ${length}, current char position: ${location}`,
-        );
-      }
+      setHighlights([
+        {
+          start: location,
+          end: location + length,
+        },
+      ]);
+      console.log(
+        `Speech ${id} progress, current word length: ${length}, current char position: ${location}`,
+      );
     });
 
     // (async () => {
